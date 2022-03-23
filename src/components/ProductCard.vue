@@ -1,26 +1,6 @@
 <template>
-  <div class="home">
-    <div class="splash-container">
-        <div class="splash">
-          <h1>Splendid Food</h1>
-        </div>
-    </div>
-
-    <main class="wrapper">
-
-        <h2>Recommended</h2>
-
-        <div class="recommended">
-
-          <ProductCard
-            v-for="(product, index) in inventory.slice(0,3)"
-            :key="product.id"
-            class="card"
-            :index="index"
-            :product="product"
-            :addToCart="addToCart"
-          />
-            <!-- <div class="card-title">
+<div class="card">
+            <div class="card-title">
               {{ product.name }}
             </div>
             <div class="card-body">
@@ -47,33 +27,26 @@
                     <label>Quantity:</label>
                   </div>
                   <div class="cell">
-                    <input type="number" v-model.number="product.quantity">
+                    <input type="number" v-model.number="quantity">
                   </div>
                 </div>
               </form>
             </div>
             <div class="card-footer">
-              <button @click="addToCart(product.name, i)" class="btn btn-light">
+              <button @click="addToCart(product.name, quantity)" class="btn btn-light">
                 Add to cart
               </button>
-            </div> -->
-
-          <!-- </div> -->
-
-        </div>
-
-    </main>
-  </div>
+            </div>
+          </div>
 </template>
 
 <script>
-import ProductCard from '@/components/ProductCard.vue'
-
 export default {
-  name: 'HomeView',
-  props: ['inventory', 'addToCart'],
-  components: {
-    ProductCard
+  props: ['product', 'index', 'addToCart'],
+  data () {
+    return {
+      quantity: 0
+    }
   }
 }
 </script>
